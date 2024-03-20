@@ -48,4 +48,11 @@ class User extends Authenticatable
             'status' => UserStatusEnum::class
         ];
     }
+
+    public function isAdmin(): bool
+    {
+        if($this->status == UserStatusEnum::ADMIN)
+            return true;
+        return false;
+    }
 }

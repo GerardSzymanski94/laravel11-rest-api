@@ -1,7 +1,14 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Api\AuthController;
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->withoutMiddleware(\App\Http\Middleware\ValidTokenMiddleware::class);
+
+Route::middleware('auth:sanctum')->group( function(){
+   Route::group(['prefix' => 'v1'], function (){
+       Route::get('orders', [ApiController::class, 'orders']);
+       Route::get('order/{id}', [ApiController::class, 'order']);
+   });
+});

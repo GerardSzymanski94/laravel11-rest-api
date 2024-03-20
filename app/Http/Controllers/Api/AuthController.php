@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Api;
+namespace App\Http\Controllers\Api;
 
 use App\Enums\ApiStatusEnum;
-use App\Enums\UserStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
 use App\Models\User;
-use Illuminate\Http\Client\Response;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
