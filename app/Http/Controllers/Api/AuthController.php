@@ -17,7 +17,8 @@ class AuthController extends Controller
             if (!Auth::attempt($request->only(['email', 'password']))) {
                 return response()->json([
                     'status' => ApiStatusEnum::ERROR,
-                ], 401);
+                    'message' => 'Email or password is invalid'
+                ], 401 );
             }
 
             $user = User::where('email', $request->email)->first();

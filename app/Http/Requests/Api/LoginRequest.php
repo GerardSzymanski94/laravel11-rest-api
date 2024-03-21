@@ -36,6 +36,6 @@ class LoginRequest extends FormRequest
             'STATUS'   => ApiStatusEnum::ERROR,
             'message'   => 'Validation errors',
             'data'      => $validator->errors()
-        ], 400));
+        ], 422));
     }
 }
